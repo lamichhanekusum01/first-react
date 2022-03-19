@@ -3,6 +3,8 @@ import './App.css';
 import Header from './MyComponents/Header';
 import {Todos} from './MyComponents/Todos';
 import {Footer} from './MyComponents/Footer';
+import {AddTodo} from './MyComponents/AddTodo';
+
 import React , {useState} from 'react';
 
 
@@ -14,6 +16,19 @@ function App() {
    }
    ));
 
+  }
+  const addTodo=(title,desc) =>
+  {
+    console.log("I am adding this todo" ,title,desc)
+    let sno= todos[todos.length-1].sno +1
+    const myTodo={
+      sno:sno,
+      title:title,
+      desc :desc,
+    }
+    setTodos([...todos,myTodo]);
+    console.log(myTodo);
+    
   }
   const [todos,setTodos]=useState([
 
@@ -36,6 +51,7 @@ function App() {
   return (
    <>
    <Header title="My Todos List" Hide={true}/>
+   <AddTodo addTodo={addTodo}/>
    <Todos todos={todos} onDelete={onDelete}/>
    <Footer/>
 </>
