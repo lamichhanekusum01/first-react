@@ -15,12 +15,24 @@ function App() {
      return e!==todo;
    }
    ));
+   localStorage.setItem("todos",JSON.stringify(todos));
 
   }
   const addTodo=(title,desc) =>
   {
     console.log("I am adding this todo" ,title,desc)
-    let sno= todos[todos.length-1].sno +1
+    let sno;
+    if(todos.length==0){
+       sno=0;
+
+
+    }
+
+    else{
+     sno= todos[todos.length-1].sno +1
+
+    }
+  
     const myTodo={
       sno:sno,
       title:title,
@@ -28,26 +40,30 @@ function App() {
     }
     setTodos([...todos,myTodo]);
     console.log(myTodo);
-    
-  }
-  const [todos,setTodos]=useState([
 
-    {
-      Sno:1,
-      title:"Tarkari Kinnu",
-      desc :"Tarkari kinnu parcha , yo kam saknalai"
-    },
-    {
-      Sno:2,
-      title:"Kapada dhunu",
-      desc :"kapada dhunu parcha , yo kam saknalai"
-    },
-    {
-      Sno:3,
-      title:"pocha lagaunu",
-      desc :"pocha lagauna parcha, yo kam saknalai"
-    },
-  ]);
+    localStorage.setItem("todos",JSON.stringify(todos));
+
+    
+  
+}
+  const [todos,setTodos]=useState([  ]);
+
+    // {
+    //   Sno:1,
+    //   title:"Tarkari Kinnu",
+    //   desc :"Tarkari kinnu parcha , yo kam saknalai"
+    // },
+    // {
+    //   Sno:2,
+    //   title:"Kapada dhunu",
+    //   desc :"kapada dhunu parcha , yo kam saknalai"
+    // },
+    // {
+    //   Sno:3,
+    //   title:"pocha lagaunu",
+    //   desc :"pocha lagauna parcha, yo kam saknalai"
+    // },
+
   return (
    <>
    <Header title="My Todos List" Hide={true}/>
